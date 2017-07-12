@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/SweetAlert2/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/SweetAlert2/js")
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,13 +19,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Active Directory Management", "Index", "ActiveDirectory", new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse pull-right">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @{
+                        var curUser = Session["user"] as User;
+                    }
+                    @if (curUser != null)
+                    {
+                        <li>
+                             @Html.ActionLink(@curUser.Username + " - Logout", "Logout")
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @Html.ActionLink("Login", "Index")
+                        </li>
+                    }
                 </ul>
             </div>
         </div>

@@ -26,6 +26,12 @@ namespace ActiveDirectoryManagement
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/SweetAlert2/css").Include(
+                "~/Content/SweetAlert2/sweetalert2.min.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/SweetAlert2/js").Include(
+                      "~/Content/SweetAlert2/sweetalert2.min.js"));
         }
     }
 }
