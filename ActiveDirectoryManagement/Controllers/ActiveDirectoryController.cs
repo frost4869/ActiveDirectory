@@ -67,7 +67,8 @@ namespace ActiveDirectoryManagement.Controllers
                         return Json(new
                         {
                             success = false,
-                            message = ex.Message
+                            message = ex.Message,
+                            exception = ex
                         });
                     }
                 }
